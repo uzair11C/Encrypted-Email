@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lock the text...</title>
+
+	<style>
+		*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	position: relative;
+}
+body{
+	width: 100%;
+	height: 100vh;
+	background: #111;
+}
+.flex{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.c{
+	flex-flow: column;
+}
+.main{
+	width: 80%;
+	justify-content: space-between;
+}
+.main .pan{
+	width: 400px;
+	height: 300px;
+	border: 5px solid #fff;
+	--br:10px;
+	background: #000;
+	border-radius: var(--br);
+}
+.pan.p1{
+	--col: #ff0048;
+  border: 5px solid var(--col);
+}
+.pan.p2{
+	--col: #00e7ff;
+  border: 5px solid var(--col);
+}
+.main .pan textarea{
+	width: 100%;
+	height: 100%;
+	resize: none;
+	border-radius: var(--br);
+	background: transparent;
+	color: var(--col);
+	outline: none;
+	border: none;
+	font-size: 2em;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.main .line{
+	position: absolute;
+	width: calc(100% - 600px);
+	background: #333;
+	height: 30px;
+	left: 300px;
+	background: linear-gradient(90deg, #ff0048,#00e7ff)
+}
+.lock{
+	width: 150px;
+	aspect-ratio: 1/1;
+  border: 5px solid #fff;
+	border-radius: 50%;
+	background: #000;
+	padding-bottom: 5px;
+}
+.lock .down{
+	width: 70px;
+	height: 50px;
+	background: #0f0;
+	border-radius: 5px;
+}
+.lock .kundi{
+	width: 50px;
+	height: 35px;
+	border: 5px solid #0f0;
+	border-radius: 50% 50% 0 0/25px 25px 0 0;
+	border-bottom: none;
+	transform-origin: right bottom;
+	transition: all .1s;
+}
+.lock .down .hole{
+	width: 10px;
+	aspect-ratio: 1/1;
+	background: #000;
+	border-radius: 50%;
+	top: 10px;
+}
+
+.email-input-wrapper
+{
+    margin-top: 50px; 
+    margin-left: 140px;
+    color: #fff
+}
+
+.email-input
+{
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #ffff;
+    width: 25vw;
+}
+
+.send-button
+{
+    padding: 10px 60px;
+    color: #fff;
+    background: crimson;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+	</style>
+</head>
+<body >
+    
+    <div class="email-input-wrapper">
+        <h2>Recipient's Email:</h2>
+        <input class="email-input" type="email" id="recipientEmail" placeholder="Recipient's Email" email>
+    </div>
+
+    <div class="flex" style="height: 70vh">
+        <div class="main flex">
+
+            <div class="line flex">
+                <div class="circle flex">
+                    <div class="lock flex c">
+                        <div class="kundi"></div>
+                        <div class="down flex">
+                            <div class="hole"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="pan p1">
+                <textarea oninput="encode()" placeholder="Enter Message"></textarea>
+            </div>
+    
+            <div class="pan p2">
+                <textarea oninput="decode()" placeholder="Encrypted Text"></textarea>
+            </div>
+        </div>
+    </div>
+
+   <center>
+    <button onclick="sendEmail()" class="send-button">Send</button>
+   </center>
+	
+<script src="crypto.js">
+	
+</script>
+</body>
+</html>
